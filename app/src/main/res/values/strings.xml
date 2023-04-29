@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Rick Hammer</string>
+    <string name="labelOrderNum">Order Number:</string>
+    <string name="labelCustomerName">Customer Name:</string>
+    <string name="labelDeskLengthInches">Desk Length in Inches:</string>
+    <string name="labelDeskWidthInches">Desk Width in Inches:</string>
+    <string name="labelDeskDrawerCount">Number of Desk Drawers:</string>
+    <string name="radioHeader">Select Desk Material:</string>
+    <string name="materialMahogany">Mahogany</string>
+    <string name="materialOak">Oak</string>
+    <string name="materialPine">Pine</string>
+</resources>

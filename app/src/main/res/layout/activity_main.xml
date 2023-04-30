@@ -59,14 +59,17 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/previewLengthPrice"
+        android:id="@+id/previewAreaPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@id/layoutDeskLengthInches"
+        app:layout_constraintBottom_toTopOf="@id/layoutDeskWidthInches"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/layoutDeskLengthInches" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/layoutDeskLengthInches"
+        app:layout_constraintTop_toBottomOf="@id/layoutDeskLengthInches"
+        app:layout_constraintVertical_bias="0.5" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layoutDeskWidthInches"
@@ -84,16 +87,6 @@
             android:hint="@string/labelDeskWidthInches"
             android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/previewWidthPrice"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@id/layoutDeskWidthInches"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/layoutDeskWidthInches" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layoutDeskDrawerCount"

@@ -3,38 +3,35 @@ package com.aetherbreaker.rickhammer;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class DelayedTextWatcher implements TextWatcher {
-    private callbackFunction callback;
-    private Timer timer = new Timer();
-    private final long DELAY = 1000; // Milliseconds
+    final android.os.Handler handler = new android.os.Handler();
+    Runnable runnable;
+    Callback callback;
 
-    public interface callbackFunction {
-        public void lambda(final Editable s);
+    public interface Callback {
+        void run(final Editable s);
     }
 
-//    constructor that accepts a lambda function to be called on text change
-    public DelayedTextWatcher(final callbackFunction callback) {
+    public DelayedTextWatcher(Callback callback) {
         this.callback = callback;
     }
 
-    @Override public void beforeTextChanged(final CharSequence s, final int start, final int count, final int after) { }
-    @Override public void onTextChanged(final CharSequence s, final int start, final int before, final int count) { }
+    public void onTextChanged(final CharSequence s, int start, final int before, int count) {
+        handler.removeCallbacks(runnable);
+    }
 
     @Override
     public void afterTextChanged(final Editable s) {
-        timer.cancel();
-        timer = new Timer();
-        timer.schedule(
-                new TimerTask() {
-                    @Override
-                    public void run() {
-                        callback.lambda(s);
-                    }
-                },
-                DELAY
-        );
+        // Show some progress, because you can access UI here
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                callback.run(s);
+            }
+        };
+        handler.postDelayed(runnable, 500);
     }
-}
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+};
